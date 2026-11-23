@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorveteria Doce Verão 🍦✨</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Fundo Frutiger Aero: Formas orgânicas irregulares e bolhas flutuantes -->
+  <div class="cenario-aero" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="bolha b1"></div>
+    <div class="bolha b2"></div>
+    <div class="bolha b3"></div>
+    <div class="bolha b4"></div>
+    <div class="bolha b5"></div>
+  </div>
+
+  <div class="container">
+    <main class="grade-principal">
+      
+      <!-- COLUNA ESQUERDA: Formulário -->
+      <section class="cartao cartao-esquerdo">
+        <!-- Mascote 1 flutuando no topo esquerdo -->
+        <div class="adesivo-mascote mascote-topo-esq">
+          <img src="mascote1.png" alt="Mascote Sorvete Morango">
+        </div>
+
+        <header>
+          <div class="icone-glossy">🍦</div>
+          <h1>Sorveteria <span>Doce Verão</span></h1>
+          <p>Preencha os dados principais do pedido ✨</p>
+        </header>
+
+        <form id="pedido">
+          <input type="hidden" id="edit-id">
+
+          <label for="sabor">Sabor do sorvete</label>
+          <select id="sabor" required>
+            <option value="">Selecione o sabor</option>
+            <option value="Chocolate" data-preco="15.00">🍫 Chocolate</option>
+            <option value="Morango" data-preco="15.00">🍓 Morango</option>
+            <option value="Baunilha" data-preco="12.00">🌼 Baunilha</option>
+            <option value="Cookies" data-preco="17.00">🍪 Cookies</option>
+          </select>
+
+          <label for="preco">Preço do produto</label>
+          <input id="preco" type="text" inputmode="numeric" placeholder="R$ 0,00" value="R$ 0,00" required>
+
+          <label for="endereco">Endereço do cliente</label>
+          <input id="endereco" type="text" placeholder="Ex.: Rua das Flores, 120 - Centro" required>
+
+          <label for="pagamento">Forma de pagamento</label>
+          <select id="pagamento" required>
+            <option value="">Selecione o pagamento</option>
+            <option value="Pix">💠 Pix</option>
+            <option value="Cartão">💳 Cartão</option>
+            <option value="Dinheiro">💵 Dinheiro</option>
+          </select>
+
+          <label for="situacao">Situação</label>
+          <select id="situacao" required>
+            <option value="Em preparo">🍨 Em preparo</option>
+            <option value="Entregue">✅ Entregue</option>
+          </select>
+
+          <button type="submit" id="btn-submit" class="btn-glossy">🛒 Fazer pedido</button>
+          <button type="button" id="btn-cancelar" class="btn-cancelar" style="display: none;">Cancelar edição</button>
+          <p id="mensagem" role="status"></p>
+        </form>
+      </section>
+
+      <!-- COLUNA DIREITA: Listagem e Pesquisa -->
+      <section class="cartao cartao-direito">
+        <!-- Mascote 3 flutuando no topo direito -->
+        <div class="adesivo-mascote mascote-topo-dir">
+          <img src="mascote3.png" alt="Mascote Gatinho Sorvete">
+        </div>
+
+        <!-- Mascote 2 flutuando no canto inferior direito -->
+        <div class="adesivo-mascote mascote-baixo-dir">
+          <img src="mascote2.png" alt="Mascote Casquinha">
+        </div>
+
+        <div class="cabecalho-lista">
+          <h2>Pedidos cadastrados 🫧</h2>
+          <span id="contador-pedidos" class="subtitulo-lista">3 pedidos</span>
+        </div>
+
+        <label for="pesquisa">Pesquisar no catálogo</label>
+        <input id="pesquisa" type="text" placeholder="Digite sabor, endereço ou pagamento...">
+        <small class="dica-busca">A busca também considera a situação do pedido.</small>
+
+        <div class="tabela-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>PEDIDO</th>
+                <th>PAGAMENTO</th>
+                <th>SITUAÇÃO</th>
+                <th>AÇÕES</th>
+              </tr>
+            </thead>
+            <tbody id="lista-pedidos">
+              <!-- Preenchido via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="rodape-exemplo">
+      ✨ Sorveteria Doce Verão • Sistema de Pedidos ✨
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
