@@ -1,343 +1,219 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap');
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 45px 20px;
-  /* Gradiente céu + doce Frutiger Aero */
-  background: linear-gradient(135deg, #c2f0ff 0%, #ffd5e8 48%, #ff9ec9 100%);
-  overflow-x: hidden;
+  padding: 20px;
+  background: radial-gradient(circle at center, #240917 0%, #0a0206 75%, #000000 100%);
   position: relative;
+  overflow-x: hidden;
 }
 
-/* --- CENÁRIO FRUTIGER AERO (Formas irregulares e bolhas) --- */
-.cenario-aero {
+/* Ornamentos florais Y2K 2000 */
+.y2k-floral {
   position: fixed;
-  inset: 0;
+  width: 420px;
+  height: 420px;
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
+  filter: drop-shadow(0 0 12px rgba(244, 114, 182, 0.35));
 }
 
-/* Formas orgânicas irregulares (Blobs) */
-.blob {
-  position: absolute;
-  filter: blur(2px);
-  opacity: 0.7;
-  animation: flutuarForma 12s ease-in-out infinite alternate;
+.y2k-topo-dir {
+  top: -15px;
+  right: -15px;
 }
 
-.blob-1 {
-  width: 420px;
-  height: 380px;
-  top: -80px;
-  left: -90px;
-  background: radial-gradient(circle at 30% 30%, #ffffff, #8be3ff 60%, #56ccf2);
-  border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-  box-shadow: inset 10px 10px 30px rgba(255, 255, 255, 0.9);
+.y2k-baixo-esq {
+  bottom: -15px;
+  left: -15px;
+  transform: rotate(180deg);
 }
 
-.blob-2 {
-  width: 480px;
-  height: 430px;
-  bottom: -110px;
-  right: -80px;
-  background: radial-gradient(circle at 30% 30%, #fff0f6, #ff85bc 65%, #e84393);
-  border-radius: 41% 59% 38% 62% / 58% 36% 64% 42%;
-  box-shadow: inset 12px 12px 35px rgba(255, 255, 255, 0.85);
-  animation-delay: -4s;
-}
-
-.blob-3 {
-  width: 300px;
-  height: 290px;
-  top: 40%;
-  left: 38%;
-  background: radial-gradient(circle at 30% 30%, #ffffff, #b8ffea 60%, #55efc4);
-  border-radius: 52% 48% 66% 34% / 39% 57% 43% 61%;
-  opacity: 0.55;
-  animation-delay: -7s;
-}
-
-/* Bolhas translúcidas estilo anos 2000 */
-.bolha {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.25) 45%, rgba(135, 224, 253, 0.35) 85%, rgba(255, 255, 255, 0.85) 100%);
-  box-shadow: inset -4px -4px 10px rgba(213, 27, 112, 0.15), 0 8px 20px rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  animation: subirBolha 9s ease-in-out infinite;
-}
-
-.b1 { width: 75px; height: 75px; top: 12%; left: 18%; animation-duration: 8s; }
-.b2 { width: 45px; height: 45px; top: 75%; left: 8%; animation-duration: 11s; }
-.b3 { width: 95px; height: 95px; top: 15%; right: 12%; animation-duration: 10s; }
-.b4 { width: 55px; height: 55px; bottom: 18%; left: 45%; animation-duration: 7s; }
-.b5 { width: 38px; height: 38px; top: 55%; right: 6%; animation-duration: 9s; }
-
-@keyframes flutuarForma {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  100% { transform: translate(20px, 18px) rotate(8deg) scale(1.05); }
-}
-
-@keyframes subirBolha {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-18px); }
-}
-
-/* --- ESTRUTURA PRINCIPAL --- */
 .container {
   width: 100%;
-  max-width: 1140px;
+  max-width: 1120px;
   position: relative;
   z-index: 1;
 }
 
 .grade-principal {
   display: grid;
-  grid-template-columns: 390px 1fr;
-  gap: 28px;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
   align-items: start;
 }
 
-/* Cartões com efeito Vidro Fosco + Bordas Orgânicas */
 .cartao {
-  position: relative;
   width: 100%;
-  padding: 34px;
-  background: rgba(255, 250, 252, 0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 
-    0 15px 35px rgba(155, 40, 99, 0.18),
-    inset 0 2px 12px rgba(255, 255, 255, 0.95);
+  padding: 32px;
+  background: rgba(24, 7, 16, 0.9);
+  border: 1.5px solid #e879b9;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), inset 0 0 14px rgba(244, 114, 182, 0.15);
 }
 
-/* Cantos assimétricos suaves */
-.cartao-esquerdo {
-  border-radius: 34px 22px 38px 24px;
-}
-
-.cartao-direito {
-  border-radius: 24px 38px 26px 36px;
-}
-
-/* --- ADESIVOS DOS MASCOTES --- */
-.adesivo-mascote {
-  position: absolute;
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #ffffff 65%, #ffe6f2 100%);
-  border: 3px solid #ffffff;
-  box-shadow: 0 8px 18px rgba(185, 20, 91, 0.22), inset 0 -4px 8px rgba(135, 224, 253, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px;
-  z-index: 5;
-  animation: balancarMascote 4s ease-in-out infinite;
-}
-
-.adesivo-mascote img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 50%;
-  mix-blend-mode: multiply; /* Ajuda a mesclar se a imagem ainda tiver fundo branco */
-}
-
-.mascote-topo-esq {
-  top: -36px;
-  left: -24px;
-  transform: rotate(-10deg);
-}
-
-.mascote-topo-dir {
-  top: -38px;
-  right: -20px;
-  width: 94px;
-  height: 94px;
-  animation-delay: -1.5s;
-}
-
-.mascote-baixo-dir {
-  bottom: -32px;
-  right: 22px;
-  width: 82px;
-  height: 82px;
-  animation-delay: -2.5s;
-}
-
-@keyframes balancarMascote {
-  0%, 100% { transform: translateY(0) rotate(-4deg); }
-  50% { transform: translateY(-7px) rotate(4deg); }
-}
-
-/* --- CABEÇALHO E CAMPOS --- */
 header {
   text-align: center;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
-.icone-glossy {
-  display: inline-grid;
-  place-items: center;
-  width: 66px;
-  height: 66px;
-  font-size: 36px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #ffffff 0%, #ffd6e8 100%);
-  border: 2px solid #ffffff;
-  box-shadow: 0 6px 15px rgba(213, 27, 112, 0.25);
-  margin-bottom: 8px;
+.icone {
+  font-size: 44px;
 }
 
 h1 {
-  color: #b9145b;
-  font-size: 28px;
-  font-weight: 800;
-  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.9);
+  color: #f9a8d4;
+  font-size: 30px;
+  text-shadow: 0 0 10px rgba(236, 72, 153, 0.55);
 }
 
 h1 span {
   display: block;
-  font-size: 23px;
-  color: #0097c2; /* Azul aquático Frutiger Aero */
+  font-size: 25px;
+  color: #ffffff;
 }
 
 header p {
-  margin-top: 6px;
-  color: #6b344d;
+  margin-top: 10px;
+  color: #e5a3c6;
   font-size: 14px;
 }
 
 label {
   display: block;
-  margin: 13px 0 5px;
-  color: #34232c;
-  font-weight: 700;
+  margin: 16px 0 7px;
+  color: #fbcfe8;
+  font-weight: bold;
   font-size: 14px;
 }
 
-input, select {
+input[type="text"], input:not([type]), select {
   width: 100%;
-  padding: 12px 14px;
-  border: 1.5px solid #e4c6d6;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 15px;
-  color: #34232c;
-  box-shadow: inset 0 2px 5px rgba(185, 20, 91, 0.06);
-  transition: all 0.2s;
+  padding: 13px;
+  border: 1px solid #833860;
+  border-radius: 9px;
+  background: #12040b;
+  font-size: 16px;
+  color: #ffffff;
 }
 
 input:focus, select:focus {
   outline: none;
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+  border-color: #f472b6;
+  box-shadow: 0 0 8px rgba(244, 114, 182, 0.4);
+}
+
+/* Grade de adicionais */
+.adicionais-lista {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.adicional-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid #592140;
+  border-radius: 8px;
+  background: #17060f;
+  font-size: 12px;
+  font-weight: normal;
+  color: #fce7f3;
+  cursor: pointer;
+}
+
+.adicional-item:hover {
+  border-color: #f472b6;
+}
+
+.adicional-item input[type="checkbox"] {
+  width: auto;
+  accent-color: #d51b70;
 }
 
 #preco {
-  color: #b9145b;
-  background: linear-gradient(180deg, #fff5f9 0%, #fde7f0 100%);
-  font-weight: 800;
+  color: #f9a8d4;
+  background: #2b0c1d;
+  border-color: #d51b70;
+  font-weight: bold;
 }
 
-/* Botão Principal Glossy estilo Frutiger Aero */
-.btn-glossy {
+button[type="submit"] {
   width: 100%;
-  margin-top: 22px;
-  padding: 14px;
-  border: 1.5px solid #ff9ec9;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #ff7eb8 0%, #d51b70 52%, #b9145b 100%);
+  margin-top: 24px;
+  padding: 15px;
+  border: 1px solid #fbcfe8;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f472b6 0%, #d51b70 50%, #9d174d 100%);
   color: white;
-  font-size: 16px;
-  font-weight: 800;
+  font-size: 17px;
+  font-weight: bold;
   cursor: pointer;
-  box-shadow: 
-    0 8px 18px rgba(213, 27, 112, 0.35),
-    inset 0 2px 3px rgba(255, 255, 255, 0.75);
-  transition: transform 0.15s, filter 0.2s;
+  box-shadow: 0 4px 15px rgba(213, 27, 112, 0.4);
 }
 
-.btn-glossy:hover {
-  filter: brightness(1.06);
-  transform: translateY(-2px);
-}
-
-.btn-glossy:active {
-  transform: translateY(0);
+button[type="submit"]:hover {
+  filter: brightness(1.1);
 }
 
 .btn-cancelar {
   width: 100%;
   margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #d8bdcc;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
-  color: #6b344d;
+  padding: 11px;
+  border: 1px solid #833860;
+  border-radius: 10px;
+  background: transparent;
+  color: #f9a8d4;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: bold;
   cursor: pointer;
 }
 
 .btn-cancelar:hover {
-  background: #ffffff;
+  background: rgba(244, 114, 182, 0.12);
 }
 
 #mensagem {
-  margin-top: 12px;
+  margin-top: 14px;
   text-align: center;
-  color: #16803d;
-  font-weight: 700;
-  font-size: 14px;
+  color: #6ee7b7;
+  line-height: 1.5;
 }
 
-/* --- COLUNA DIREITA: LISTAGEM --- */
+/* --- Coluna Direita --- */
 .cabecalho-lista h2 {
-  color: #b9145b;
-  font-size: 23px;
-  font-weight: 800;
+  color: #f9a8d4;
+  font-size: 22px;
 }
 
 .subtitulo-lista {
-  display: inline-block;
+  display: block;
   margin-top: 4px;
-  margin-bottom: 14px;
-  padding: 3px 12px;
-  border-radius: 999px;
-  background: #e0f7ff;
-  color: #0284c7;
-  font-weight: 700;
-  font-size: 13px;
+  margin-bottom: 16px;
+  color: #e5a3c6;
+  font-size: 14px;
 }
 
 .dica-busca {
   display: block;
   margin-top: 6px;
-  margin-bottom: 18px;
-  color: #6b344d;
+  margin-bottom: 20px;
+  color: #b87a9b;
   font-size: 12px;
 }
 
 .tabela-wrapper {
   overflow-x: auto;
-  background: rgba(255, 255, 255, 0.65);
-  border-radius: 18px;
-  padding: 8px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 table {
@@ -350,106 +226,110 @@ th {
   padding: 12px 8px;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
-  color: #6b344d;
-  border-bottom: 1.5px solid #f0dce6;
+  letter-spacing: 0.5px;
+  color: #f472b6;
+  border-bottom: 1px solid #4a1c35;
 }
 
 td {
   padding: 14px 8px;
-  border-bottom: 1px solid #f5e6ee;
+  border-bottom: 1px solid #331224;
   vertical-align: middle;
   font-size: 14px;
-  color: #34232c;
-}
-
-tr:last-child td {
-  border-bottom: none;
+  color: #fce7f3;
 }
 
 .pedido-titulo {
-  font-weight: 800;
-  color: #34232c;
+  font-weight: bold;
+  color: #ffffff;
+  display: block;
+}
+
+.pedido-adicionais {
+  font-size: 11px;
+  color: #f472b6;
+  margin-top: 2px;
   display: block;
 }
 
 .pedido-subtitulo {
   font-size: 12px;
-  color: #6b344d;
+  color: #c98aa9;
   margin-top: 3px;
   display: block;
 }
 
-/* Badges Glossy */
 .badge {
   display: inline-block;
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 800;
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  font-weight: bold;
 }
 
 .badge-preparo {
-  background: linear-gradient(180deg, #ffe3f0 0%, #ffc4df 100%);
-  color: #b9145b;
+  background: rgba(213, 27, 112, 0.25);
+  border: 1px solid #d51b70;
+  color: #fbcfe8;
 }
 
 .badge-entregue {
-  background: linear-gradient(180deg, #d4fce3 0%, #9ae6b4 100%);
-  color: #166534;
+  background: rgba(33, 131, 71, 0.25);
+  border: 1px solid #34d399;
+  color: #a7f3d0;
 }
 
-/* Botões Editar e Excluir */
 .acoes-grupo {
   display: flex;
   gap: 6px;
 }
 
 .btn-acao {
-  padding: 6px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 999px;
+  padding: 6px 10px;
+  border-radius: 6px;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.15s;
-}
-
-.btn-acao:hover {
-  transform: scale(1.05);
 }
 
 .btn-editar {
-  background: linear-gradient(180deg, #e0f7ff 0%, #bae6fd 100%);
-  color: #0369a1;
+  background: #2b0c1d;
+  border: 1px solid #f472b6;
+  color: #fbcfe8;
+}
+
+.btn-editar:hover {
+  background: #471530;
 }
 
 .btn-excluir {
-  background: linear-gradient(180deg, #ffe4ec 0%, #fecdd3 100%);
-  color: #be123c;
+  background: #3b0d1e;
+  border: 1px solid #fb7185;
+  color: #fda4af;
+}
+
+.btn-excluir:hover {
+  background: #5c142f;
 }
 
 .rodape-exemplo {
   text-align: center;
-  margin-top: 22px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #6b344d;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  margin-top: 18px;
+  font-size: 12px;
+  color: #c98aa9;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 860px) {
   .grade-principal {
     grid-template-columns: 1fr;
-    gap: 44px;
   }
-  .mascote-topo-esq { left: 10px; }
-  .mascote-topo-dir { right: 10px; }
+  .y2k-floral {
+    width: 240px;
+    height: 240px;
+  }
 }
 
 @media (max-width: 480px) {
-  .cartao { padding: 24px; }
-  h1 { font-size: 24px; }
-  .adesivo-mascote { width: 72px; height: 72px; }
+  .cartao { padding: 22px; }
+  h1 { font-size: 26px; }
 }
