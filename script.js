@@ -1,5 +1,6 @@
 const form = document.getElementById('pedido');
 const selectSabor = document.getElementById('sabor');
+const checkboxesAdicionais = document.querySelectorAll('#adicionais input[type="checkbox"]');
 const inputPreco = document.getElementById('preco');
 const inputEndereco = document.getElementById('endereco');
 const selectPagamento = document.getElementById('pagamento');
@@ -13,18 +14,16 @@ const listaPedidos = document.getElementById('lista-pedidos');
 const contadorPedidos = document.getElementById('contador-pedidos');
 const inputPesquisa = document.getElementById('pesquisa');
 
-// Carrega os pedidos salvos ou usa os exemplos iniciais
 let pedidos = JSON.parse(localStorage.getItem('pedidos_sorveteria')) || [
-  { id: 1, sabor: 'Chocolate', preco: 15.00, endereco: 'Rua das Flores, 120 - Centro', pagamento: 'Pix', situacao: 'Em preparo' },
-  { id: 2, sabor: 'Cookies', preco: 17.00, endereco: 'Av. Brasil, 450 - Jardim', pagamento: 'Cartão', situacao: 'Entregue' },
-  { id: 3, sabor: 'Morango', preco: 15.00, endereco: 'Rua Bela Vista, 88 - Sul', pagamento: 'Dinheiro', situacao: 'Em preparo' }
+  { id: 1, sabor: 'Chocolate', adicionais: ['Granulado'], preco: 17.00, endereco: 'Rua das Flores, 120 - Centro', pagamento: 'Pix', situacao: 'Em preparo' },
+  { id: 2, sabor: 'Cookies', adicionais: ['Calda de Chocolate', 'Chantilly'], preco: 22.50, endereco: 'Av. Brasil, 450 - Jardim', pagamento: 'Cartão', situacao: 'Entregue' },
+  { id: 3, sabor: 'Morango', adicionais: ['Leite Condensado'], preco: 17.50, endereco: 'Rua Bela Vista, 88 - Sul', pagamento: 'Dinheiro', situacao: 'Em preparo' }
 ];
 
 function salvarNoNavegador() {
   localStorage.setItem('pedidos_sorveteria', JSON.stringify(pedidos));
 }
 
-// Formata número para moeda brasileira (ex: 15.5 -> "R$ 15,50")
 function formatarMoeda(valor) {
   return Number(valor).toLocaleString('pt-BR', {
     style: 'currency',
@@ -32,38 +31,46 @@ function formatarMoeda(valor) {
   });
 }
 
-// Converte texto digitado ("R$ 15,50") para número (15.5)
 function extrairNumeroPreco(texto) {
   const apenasDigitos = texto.replace(/\D/g, '');
   if (!apenasDigitos) return 0;
   return Number(apenasDigitos) / 100;
 }
 
-// Permite digitar o valor livremente com máscara automática de R$
+function calcularTotal() {
+  const opcao = selectSabor.options[selectSabor.selectedIndex];
+  let total = Number(opcao?.getAttribute('data-preco') || 0);
+
+  checkboxesAdicionais.forEach(cb => {
+    if (cb.checked) {
+      total += Number(cb.getAttribute('data-preco') || 0);
+    }
+  });
+
+  inputPreco.value = formatarMoeda(total);
+}
+
 inputPreco.addEventListener('input', (e) => {
   const valorNumerico = extrairNumeroPreco(e.target.value);
   e.target.value = formatarMoeda(valorNumerico);
 });
 
-// Sugere o preço padrão ao trocar o sabor (mas você ainda pode alterá-lo digitando)
-selectSabor.addEventListener('change', () => {
-  const opcao = selectSabor.options[selectSabor.selectedIndex];
-  const precoSugerido = opcao.getAttribute('data-preco');
-  if (precoSugerido) {
-    inputPreco.value = formatarMoeda(precoSugerido);
-  }
-});
+selectSabor.addEventListener('change', calcularTotal);
+checkboxesAdicionais.forEach(cb => cb.addEventListener('change', calcularTotal));
 
-// Renderiza a lista de pedidos na tabela
 function renderizarTabela() {
   const termo = inputPesquisa.value.toLowerCase().trim();
 
-  const filtrados = pedidos.filter(p =>
-    p.sabor.toLowerCase().includes(termo) ||
-    p.endereco.toLowerCase().includes(termo) ||
-    p.pagamento.toLowerCase().includes(termo) ||
-    p.situacao.toLowerCase().includes(termo)
-  );
+  const filtrados = pedidos.filter(p => {
+    const textoAdd = (p.adicionais || []).join(', ').toLowerCase();
+    return (
+      p.sabor.toLowerCase().includes(termo) ||
+      textoAdd.includes(termo) ||
+      p.endereco.toLowerCase().includes(termo) ||
+      p.pagamento.toLowerCase().includes(termo) ||
+      p.situacao.toLowerCase().includes(termo)
+    );
+  });
 
   contadorPedidos.textContent = `${filtrados.length} ${filtrados.length === 1 ? 'pedido' : 'pedidos'}`;
   listaPedidos.innerHTML = '';
@@ -71,7 +78,7 @@ function renderizarTabela() {
   if (filtrados.length === 0) {
     listaPedidos.innerHTML = `
       <tr>
-        <td colspan="4" style="text-align: center; color: #6b344d; padding: 20px;">
+        <td colspan="4" style="text-align: center; color: #c98aa9; padding: 20px;">
           Nenhum pedido encontrado.
         </td>
       </tr>
@@ -82,10 +89,14 @@ function renderizarTabela() {
   filtrados.forEach(pedido => {
     const tr = document.createElement('tr');
     const badgeClasse = pedido.situacao === 'Entregue' ? 'badge-entregue' : 'badge-preparo';
+    const textoAdicionais = (pedido.adicionais && pedido.adicionais.length > 0)
+      ? `+ ${pedido.adicionais.join(', ')}`
+      : 'Sem adicionais';
 
     tr.innerHTML = `
       <td>
         <span class="pedido-titulo">${pedido.sabor} (${formatarMoeda(pedido.preco)})</span>
+        <span class="pedido-adicionais">${textoAdicionais}</span>
         <span class="pedido-subtitulo">${pedido.endereco}</span>
       </td>
       <td>${pedido.pagamento}</td>
@@ -101,21 +112,23 @@ function renderizarTabela() {
   });
 }
 
-// Resetar estado do formulário (tanto após salvar quanto ao cancelar edição)
 function resetarFormulario() {
   form.reset();
   inputEditId.value = '';
+  checkboxesAdicionais.forEach(cb => cb.checked = false);
   inputPreco.value = 'R$ 0,00';
   btnSubmit.textContent = '🛒 Fazer pedido';
   btnCancelar.style.display = 'none';
 }
 
-// Botão Fazer pedido / Salvar alterações
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const precoDigitado = extrairNumeroPreco(inputPreco.value);
   const editId = inputEditId.value;
+  const adicionaisSelecionados = Array.from(checkboxesAdicionais)
+    .filter(cb => cb.checked)
+    .map(cb => cb.value);
 
   if (editId) {
     const index = pedidos.findIndex(p => p.id === Number(editId));
@@ -123,6 +136,7 @@ form.addEventListener('submit', (e) => {
       pedidos[index] = {
         id: Number(editId),
         sabor: selectSabor.value,
+        adicionais: adicionaisSelecionados,
         preco: precoDigitado,
         endereco: inputEndereco.value.trim(),
         pagamento: selectPagamento.value,
@@ -134,6 +148,7 @@ form.addEventListener('submit', (e) => {
     pedidos.unshift({
       id: Date.now(),
       sabor: selectSabor.value,
+      adicionais: adicionaisSelecionados,
       preco: precoDigitado,
       endereco: inputEndereco.value.trim(),
       pagamento: selectPagamento.value,
@@ -150,20 +165,17 @@ form.addEventListener('submit', (e) => {
   setTimeout(() => { mensagem.textContent = ''; }, 3000);
 });
 
-// Botão Cancelar edição
 btnCancelar.addEventListener('click', () => {
   resetarFormulario();
   mensagem.textContent = '';
 });
 
-// Cliques nos botões Editar e Excluir dentro da tabela
 listaPedidos.addEventListener('click', (e) => {
   const botao = e.target.closest('button');
   if (!botao) return;
 
   const id = Number(botao.getAttribute('data-id'));
 
-  // Ação: EXCLUIR
   if (botao.classList.contains('btn-excluir')) {
     pedidos = pedidos.filter(p => p.id !== id);
     if (Number(inputEditId.value) === id) {
@@ -175,13 +187,15 @@ listaPedidos.addEventListener('click', (e) => {
     setTimeout(() => { mensagem.textContent = ''; }, 2500);
   }
 
-  // Ação: EDITAR
   if (botao.classList.contains('btn-editar')) {
     const pedido = pedidos.find(p => p.id === id);
     if (!pedido) return;
 
     inputEditId.value = pedido.id;
     selectSabor.value = pedido.sabor;
+    checkboxesAdicionais.forEach(cb => {
+      cb.checked = (pedido.adicionais || []).includes(cb.value);
+    });
     inputPreco.value = formatarMoeda(pedido.preco);
     inputEndereco.value = pedido.endereco;
     selectPagamento.value = pedido.pagamento;
@@ -194,8 +208,5 @@ listaPedidos.addEventListener('click', (e) => {
   }
 });
 
-// Filtro de pesquisa
 inputPesquisa.addEventListener('input', renderizarTabela);
-
-// Inicializa a tabela
 renderizarTabela();
