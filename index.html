@@ -3,63 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sorveteria Doce Verão 🍦✨</title>
+  <title>Sorveteria Doce Verão</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Decoração Y2K Floral 2000 nos cantos -->
+  <svg class="y2k-floral y2k-topo-dir" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="rosaMetalico" x1="0" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#ffffff"/>
+        <stop offset="35%" stop-color="#f472b6"/>
+        <stop offset="70%" stop-color="#9d174d"/>
+        <stop offset="100%" stop-color="#3b0722"/>
+      </linearGradient>
+    </defs>
+    <path d="M400 0 C320 10, 260 60, 290 130 C315 185, 385 165, 365 115 C350 80, 305 95, 315 125" stroke="url(#rosaMetalico)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M390 20 C270 35, 190 110, 225 215 C255 300, 355 275, 330 205 C310 155, 250 175, 265 215" stroke="url(#rosaMetalico)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M340 0 C220 5, 110 70, 130 165 C145 235, 225 220, 205 165 C190 125, 145 140, 155 170" stroke="url(#rosaMetalico)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M260 15 C195 45, 175 110, 215 145 C180 125, 155 75, 210 25 Z" fill="url(#rosaMetalico)" opacity="0.7"/>
+    <path d="M375 95 C335 145, 345 225, 395 255 C355 235, 310 185, 355 105 Z" fill="url(#rosaMetalico)" opacity="0.75"/>
+    <circle cx="150" cy="45" r="3" fill="#fbcfe8"/><circle cx="170" cy="36" r="2.5" fill="#fbcfe8"/><circle cx="192" cy="30" r="2" fill="#fbcfe8"/>
+    <circle cx="245" cy="255" r="3.5" fill="#fbcfe8"/><circle cx="268" cy="268" r="3" fill="#fbcfe8"/><circle cx="292" cy="274" r="2.5" fill="#fbcfe8"/>
+  </svg>
 
-  <!-- Fundo Frutiger Aero: Formas orgânicas irregulares e bolhas flutuantes -->
-  <div class="cenario-aero" aria-hidden="true">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="bolha b1"></div>
-    <div class="bolha b2"></div>
-    <div class="bolha b3"></div>
-    <div class="bolha b4"></div>
-    <div class="bolha b5"></div>
-  </div>
+  <svg class="y2k-floral y2k-baixo-esq" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <path d="M400 0 C320 10, 260 60, 290 130 C315 185, 385 165, 365 115 C350 80, 305 95, 315 125" stroke="url(#rosaMetalico)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M390 20 C270 35, 190 110, 225 215 C255 300, 355 275, 330 205 C310 155, 250 175, 265 215" stroke="url(#rosaMetalico)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M340 0 C220 5, 110 70, 130 165 C145 235, 225 220, 205 165 C190 125, 145 140, 155 170" stroke="url(#rosaMetalico)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M260 15 C195 45, 175 110, 215 145 C180 125, 155 75, 210 25 Z" fill="url(#rosaMetalico)" opacity="0.7"/>
+    <path d="M375 95 C335 145, 345 225, 395 255 C355 235, 310 185, 355 105 Z" fill="url(#rosaMetalico)" opacity="0.75"/>
+    <circle cx="150" cy="45" r="3" fill="#fbcfe8"/><circle cx="170" cy="36" r="2.5" fill="#fbcfe8"/><circle cx="192" cy="30" r="2" fill="#fbcfe8"/>
+    <circle cx="245" cy="255" r="3.5" fill="#fbcfe8"/><circle cx="268" cy="268" r="3" fill="#fbcfe8"/><circle cx="292" cy="274" r="2.5" fill="#fbcfe8"/>
+  </svg>
 
   <div class="container">
     <main class="grade-principal">
       
       <!-- COLUNA ESQUERDA: Formulário -->
-      <section class="cartao cartao-esquerdo">
-        <!-- MASCOTE 1: Ursinho no copinho de sorvete rosa com morango -->
-        <div class="adesivo-mascote mascote-topo-esq">
-          <svg viewBox="0 0 120 120" width="100%" height="100%">
-            <!-- Copinho / Casquinha -->
-            <path d="M30 76 L90 76 L82 95 C75 108 45 108 38 95 Z" fill="#f29191" stroke="#222" stroke-width="4" stroke-linejoin="round"/>
-            <path d="M27 72 L93 72 L89 84 L31 84 Z" fill="#f6df98" stroke="#222" stroke-width="4" stroke-linejoin="round"/>
-            <!-- Capuz de sorvete rosa -->
-            <circle cx="40" cy="30" r="8" fill="#ffd1e3" stroke="#222" stroke-width="4"/>
-            <path d="M24 68 C20 40 38 22 60 22 C82 22 100 40 96 68 C96 74 24 74 24 68 Z" fill="#ffd1e3" stroke="#222" stroke-width="4"/>
-            <!-- Rostinho branco -->
-            <circle cx="60" cy="54" r="24" fill="#ffffff" stroke="#222" stroke-width="4"/>
-            <!-- Olhos e bochechas -->
-            <circle cx="49" cy="50" r="4" fill="#222"/>
-            <circle cx="48" cy="49" r="1.5" fill="#fff"/>
-            <circle cx="71" cy="50" r="4" fill="#222"/>
-            <circle cx="70" cy="49" r="1.5" fill="#fff"/>
-            <ellipse cx="41" cy="57" rx="5" ry="3" fill="#ff9ebb"/>
-            <ellipse cx="79" cy="57" rx="5" ry="3" fill="#ff9ebb"/>
-            <!-- Boquinha -->
-            <path d="M55 56 Q58 60 60 56 Q62 60 65 56" fill="none" stroke="#222" stroke-width="3" stroke-linecap="round"/>
-            <path d="M57 58 Q60 66 63 58 Z" fill="#ff758f" stroke="#222" stroke-width="2.5"/>
-            <!-- Chantilly e Morango no topo -->
-            <path d="M62 24 C62 14 78 12 85 20 C92 22 92 32 82 33 C76 38 64 34 62 24 Z" fill="#fffbe6" stroke="#222" stroke-width="3.5"/>
-            <path d="M74 14 C74 6 88 6 88 15 C88 21 81 24 81 24 C81 24 74 21 74 14 Z" fill="#ff5964" stroke="#222" stroke-width="3"/>
-            <ellipse cx="90" cy="14" rx="5" ry="3" fill="#52b788" stroke="#222" stroke-width="2.5"/>
-            <!-- Patinhas -->
-            <ellipse cx="52" cy="73" rx="4" ry="6" fill="#fff" stroke="#222" stroke-width="3.5"/>
-            <ellipse cx="68" cy="73" rx="4" ry="6" fill="#fff" stroke="#222" stroke-width="3.5"/>
-          </svg>
-        </div>
-
+      <section class="cartao">
         <header>
-          <div class="icone-glossy">🍦</div>
+          <div class="icone">🍦✨</div>
           <h1>Sorveteria <span>Doce Verão</span></h1>
-          <p>Preencha os dados principais do pedido ✨</p>
+          <p>Preencha os dados principais do pedido.</p>
         </header>
 
         <form id="pedido">
@@ -67,12 +52,40 @@
 
           <label for="sabor">Sabor do sorvete</label>
           <select id="sabor" required>
-            <option value="">Selecione o sabor</option>
-            <option value="Chocolate" data-preco="15.00">🍫 Chocolate</option>
-            <option value="Morango" data-preco="15.00">🍓 Morango</option>
-            <option value="Baunilha" data-preco="12.00">🌼 Baunilha</option>
-            <option value="Cookies" data-preco="17.00">🍪 Cookies</option>
+            <option value="" data-preco="0">Selecione o sabor</option>
+            <option value="Chocolate" data-preco="15.00">Chocolate</option>
+            <option value="Morango" data-preco="15.00">Morango</option>
+            <option value="Baunilha" data-preco="12.00">Baunilha</option>
+            <option value="Cookies" data-preco="17.00">Cookies</option>
+            <option value="Chocomenta" data-preco="16.00">Chocomenta</option>
+            <option value="Pistache" data-preco="19.00">Pistache</option>
+            <option value="Ninho com Nutella" data-preco="18.00">Ninho com Nutella</option>
+            <option value="Flocos" data-preco="14.00">Flocos</option>
+            <option value="Doce de Leite" data-preco="15.00">Doce de Leite</option>
+            <option value="Açaí com Morango" data-preco="16.00">Açaí com Morango</option>
           </select>
+
+          <label>Adicionais</label>
+          <div class="adicionais-lista" id="adicionais">
+            <label class="adicional-item">
+              <input type="checkbox" value="Granulado" data-preco="2.00"> Granulado (+R$ 2,00)
+            </label>
+            <label class="adicional-item">
+              <input type="checkbox" value="Calda de Chocolate" data-preco="2.50"> Calda Choc. (+R$ 2,50)
+            </label>
+            <label class="adicional-item">
+              <input type="checkbox" value="Chantilly" data-preco="3.00"> Chantilly (+R$ 3,00)
+            </label>
+            <label class="adicional-item">
+              <input type="checkbox" value="Leite Condensado" data-preco="2.50"> Leite Cond. (+R$ 2,50)
+            </label>
+            <label class="adicional-item">
+              <input type="checkbox" value="Confete" data-preco="3.00"> Confete (+R$ 3,00)
+            </label>
+            <label class="adicional-item">
+              <input type="checkbox" value="Paçoca" data-preco="2.00"> Paçoca (+R$ 2,00)
+            </label>
+          </div>
 
           <label for="preco">Preço do produto</label>
           <input id="preco" type="text" inputmode="numeric" placeholder="R$ 0,00" value="R$ 0,00" required>
@@ -83,84 +96,32 @@
           <label for="pagamento">Forma de pagamento</label>
           <select id="pagamento" required>
             <option value="">Selecione o pagamento</option>
-            <option value="Pix">💠 Pix</option>
-            <option value="Cartão">💳 Cartão</option>
-            <option value="Dinheiro">💵 Dinheiro</option>
+            <option value="Pix">Pix</option>
+            <option value="Cartão">Cartão</option>
+            <option value="Dinheiro">Dinheiro</option>
           </select>
 
           <label for="situacao">Situação</label>
           <select id="situacao" required>
-            <option value="Em preparo">🍨 Em preparo</option>
-            <option value="Entregue">✅ Entregue</option>
+            <option value="Em preparo">Em preparo</option>
+            <option value="Entregue">Entregue</option>
           </select>
 
-          <button type="submit" id="btn-submit" class="btn-glossy">🛒 Fazer pedido</button>
+          <button type="submit" id="btn-submit">🛒 Fazer pedido</button>
           <button type="button" id="btn-cancelar" class="btn-cancelar" style="display: none;">Cancelar edição</button>
           <p id="mensagem" role="status"></p>
         </form>
       </section>
 
       <!-- COLUNA DIREITA: Listagem e Pesquisa -->
-      <section class="cartao cartao-direito">
-        <!-- MASCOTE 3: Gatinho azul com chantilly e cereja -->
-        <div class="adesivo-mascote mascote-topo-dir">
-          <svg viewBox="0 0 120 120" width="100%" height="100%">
-            <!-- Orelhinhas de gato -->
-            <path d="M32 45 L34 22 L52 34 Z" fill="#90d5ff" stroke="#222" stroke-width="4" stroke-linejoin="round"/>
-            <path d="M88 45 L86 22 L68 34 Z" fill="#90d5ff" stroke="#222" stroke-width="4" stroke-linejoin="round"/>
-            <!-- Capuz azul -->
-            <circle cx="60" cy="60" r="34" fill="#bfe6ff" stroke="#222" stroke-width="4"/>
-            <!-- Rostinho -->
-            <circle cx="60" cy="62" r="25" fill="#ffffff" stroke="#222" stroke-width="4"/>
-            <!-- Olhinhos felizes fechados -->
-            <path d="M44 58 Q49 53 54 58" fill="none" stroke="#222" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M66 58 Q71 53 76 58" fill="none" stroke="#222" stroke-width="3.5" stroke-linecap="round"/>
-            <ellipse cx="41" cy="65" rx="5" ry="3" fill="#ff9ebb"/>
-            <ellipse cx="79" cy="65" rx="5" ry="3" fill="#ff9ebb"/>
-            <!-- Boquinha -->
-            <path d="M55 64 Q58 68 60 64 Q62 68 65 64" fill="none" stroke="#222" stroke-width="3" stroke-linecap="round"/>
-            <path d="M57 66 Q60 74 63 66 Z" fill="#ff758f" stroke="#222" stroke-width="2.5"/>
-            <!-- Chantilly e Cereja -->
-            <circle cx="42" cy="30" r="10" fill="#ffffff" stroke="#222" stroke-width="3.5"/>
-            <circle cx="34" cy="20" r="7" fill="#ff4d6d" stroke="#222" stroke-width="3"/>
-            <path d="M33 14 Q28 8 24 10" fill="none" stroke="#2d6a4f" stroke-width="3" stroke-linecap="round"/>
-            <!-- Colher de sorvete -->
-            <line x1="45" y1="88" x2="78" y2="75" stroke="#222" stroke-width="5" stroke-linecap="round"/>
-            <circle cx="84" cy="73" r="12" fill="#ced4da" stroke="#222" stroke-width="3.5"/>
-          </svg>
-        </div>
-
-        <!-- MASCOTE 2: Ursinho branco segurando casquinha -->
-        <div class="adesivo-mascote mascote-baixo-dir">
-          <svg viewBox="0 0 120 120" width="100%" height="100%">
-            <!-- Orelhinhas -->
-            <circle cx="38" cy="28" r="9" fill="#ffffff" stroke="#222" stroke-width="4"/>
-            <circle cx="82" cy="28" r="9" fill="#ffffff" stroke="#222" stroke-width="4"/>
-            <!-- Corpinho/Cabeça -->
-            <ellipse cx="60" cy="62" rx="35" ry="34" fill="#ffffff" stroke="#222" stroke-width="4"/>
-            <!-- Olhos e bochechas -->
-            <circle cx="48" cy="52" r="4" fill="#222"/>
-            <circle cx="47" cy="51" r="1.5" fill="#fff"/>
-            <circle cx="72" cy="52" r="4" fill="#222"/>
-            <circle cx="71" cy="51" r="1.5" fill="#fff"/>
-            <ellipse cx="38" cy="60" rx="6" ry="3.5" fill="#ff9ebb"/>
-            <ellipse cx="82" cy="60" rx="6" ry="3.5" fill="#ff9ebb"/>
-            <!-- Boquinha -->
-            <path d="M55 58 Q58 62 60 58 Q62 62 65 58" fill="none" stroke="#222" stroke-width="3" stroke-linecap="round"/>
-            <!-- Casquinha na mão -->
-            <path d="M38 78 L52 78 L45 96 Z" fill="#f4d58d" stroke="#222" stroke-width="3" stroke-linejoin="round"/>
-            <circle cx="45" cy="74" r="6" fill="#90e0ef" stroke="#222" stroke-width="3"/>
-            <circle cx="45" cy="66" r="5.5" fill="#ffafcc" stroke="#222" stroke-width="3"/>
-          </svg>
-        </div>
-
+      <section class="cartao">
         <div class="cabecalho-lista">
-          <h2>Pedidos cadastrados 🫧</h2>
+          <h2>Pedidos cadastrados ✧</h2>
           <span id="contador-pedidos" class="subtitulo-lista">3 pedidos</span>
         </div>
 
         <label for="pesquisa">Pesquisar no catálogo</label>
-        <input id="pesquisa" type="text" placeholder="Digite sabor, endereço ou pagamento...">
+        <input id="pesquisa" type="text" placeholder="Digite sabor, adicional, endereço ou pagamento...">
         <small class="dica-busca">A busca também considera a situação do pedido.</small>
 
         <div class="tabela-wrapper">
@@ -183,7 +144,7 @@
     </main>
 
     <footer class="rodape-exemplo">
-      ✨ Sorveteria Doce Verão • Sistema de Pedidos ✨
+      ✧ Exemplo de uma tabela simples: pedidos • identificador, sabor, adicionais, endereço, pagamento e situação ✧
     </footer>
   </div>
 
